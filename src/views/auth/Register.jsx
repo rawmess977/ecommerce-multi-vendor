@@ -1,6 +1,26 @@
 import { Link } from "react-router-dom";
 import {FaGoogle, FaFacebook} from 'react-icons/fa'
+import { useState } from "react";
+
+
 const Register = () => {
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    password: ''
+  })
+  
+  const inputHandle = (e) => {
+    setState({
+      ...state,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  const submit = (e) =>{
+    e.target.value;
+    console.log(state)
+  }
   return (
     <div className="min-w-screen min-h-screen bg-[$cdcae9] flex justify-center items-center ">
       <div className="w-[350px] text-[#ffffff] p-2">
@@ -9,7 +29,7 @@ const Register = () => {
           <p className="text-sm mb-3 font-medium">
             Please register your account
           </p>
-          <form action="">
+          <form action="" onSubmit={submit}>
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="name">Name</label>
               <input
@@ -19,6 +39,8 @@ const Register = () => {
                 placeholder="Name"
                 id="name"
                 required
+                onChange={inputHandle}
+                value={state.name}
               />
             </div>
             <div className="flex flex-col w-full gap-1 mb-3">
@@ -30,6 +52,8 @@ const Register = () => {
                 placeholder="Email"
                 id="email"
                 required
+                onChange={inputHandle}
+                value={state.email}
               />
             </div>
             <div className="flex flex-col w-full gap-1 mb-3">
@@ -41,6 +65,8 @@ const Register = () => {
                 placeholder="Email"
                 id="password"
                 required
+                onChange={inputHandle}
+                value={state.password}
               />
             </div>
             <div className="flex items-center w-full gap-3 mb-3">
@@ -49,6 +75,7 @@ const Register = () => {
                 name="checkbox"
                 id="checkbox"
                 className="text-blue-600 overflow-hidden bg-gray-200 rounded border-gray-300  focus:ring-blue-500"
+                required
               />
               <label htmlFor="checkbox">
                 {" "}
