@@ -2,7 +2,7 @@ import { lazy    } from "react"; //is used for code splitting in React — meani
 
 const Login = lazy(()=>import("../../views/auth/Login"))
 const Register = lazy(()=>import("../../views/auth/Register"))
-
+const AdminLogin = lazy(()=>import("../../views/auth/AdminLogin"))
 const publicRoutes = [
     {
         path: '/login',
@@ -11,6 +11,10 @@ const publicRoutes = [
     {
         path: '/register',
         element: <Register />
+    },
+    {
+        path:'/admin/login',
+        element: <AdminLogin />
     }
    
 ]

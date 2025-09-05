@@ -18,7 +18,7 @@ const Register = () => {
   }
 
   const submit = (e) =>{
-    e.target.value;
+    e.preventDefault();
     console.log(state)
   }
   return (

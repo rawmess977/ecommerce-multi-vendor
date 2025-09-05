@@ -1,15 +1,34 @@
 import { Link } from "react-router-dom";
 import {FaGoogle, FaFacebook} from 'react-icons/fa'
+import { useState } from "react";
 const Login = () => {
+    const [state, setState] = useState({
+   
+    email: '',
+    password: ''
+  })
+  
+  const inputHandle = (e) => {
+    setState({
+      ...state,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  const submit = (e) =>{
+    e.preventDefault();
+    console.log(state)
+  }
+  
   return (
-    <div className="min-w-screen min-h-screen bg-[$cdcae9] flex justify-center items-center ">
+        <div className="min-w-screen min-h-screen bg-[$cdcae9] flex justify-center items-center ">
       <div className="w-[350px] text-[#ffffff] p-2">
         <div className="bg-[#6f68d1] p-4 rounded-md">
           <h2 className="text-xl mb-3 font-bold">Welcome to E-Commerce</h2>
           <p className="text-sm mb-3 font-medium">
             Please Login your account
           </p>
-          <form action="">
+          <form action="" onSubmit={submit}>
             
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="email">Email</label>
@@ -20,6 +39,8 @@ const Login = () => {
                 placeholder="Email"
                 id="email"
                 required
+                onChange={inputHandle}
+                value={state.value}
               />
             </div>
             <div className="flex flex-col w-full gap-1 mb-3">
@@ -31,20 +52,11 @@ const Login = () => {
                 placeholder="Email"
                 id="password"
                 required
+                onChange={inputHandle}
+                value={state.value}
               />
             </div>
-            {/* <div className="flex items-center w-full gap-3 mb-3">
-              <input
-                type="checkbox"
-                name="checkbox"
-                id="checkbox"
-                className="text-blue-600 overflow-hidden bg-gray-200 rounded border-gray-300  focus:ring-blue-500"
-              />
-              <label htmlFor="checkbox">
-                {" "}
-                I agree to privacy policy & terms
-              </label>
-            </div> */}
+            
 
             <button className="bg-slate-800 w-full hover:shadow-blue-300/ hover:shadow-lg text-white rounded-md px-7 py-2 mb-3">
               Login
