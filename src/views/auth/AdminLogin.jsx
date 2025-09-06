@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { FaGoogle, FaFacebook } from "react-icons/fa";
+
 import { useState } from "react";
 
 const AdminLogin = () => {
