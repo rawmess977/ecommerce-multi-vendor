@@ -5,11 +5,21 @@ const App = lazy(() => import("./App"));
 import { BrowserRouter } from "react-router-dom";
 import store from "./store/store";
 import { Provider } from "react-redux";
+import {Toaster} from 'react-hot-toast'
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Provider store={store}>
       <Suspense>
         <App />
+        <Toaster toastOptions={
+          {
+            position: 'top-right',
+            style: {
+              background: "#293046",
+              color: 'whitesmoke'
+            }
+          }
+        } />
       </Suspense>
     </Provider>
   </BrowserRouter>
