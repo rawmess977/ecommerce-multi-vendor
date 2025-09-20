@@ -1,15 +1,23 @@
-import { useState } from 'react'
-import Router from './router/Router'
-import publicRoutes from './router/routes/publicRoutes';
 
+import Router from './router/Router';
+import publicRoutes from './router/routes/publicRoutes';
+import { useEffect, useState, Suspense } from 'react';
+import {getRoutes} from './router/routes';
 
 function App() {
-  const [allRoutes, setAllroutes] = useState([...publicRoutes]);
-    
+  const [allRoutes, setAllRoutes] = useState([...publicRoutes]);
+
+  useEffect(() => {
+    const routes = getRoutes();
+    setAllRoutes(prev => [...prev, ...routes]);
+  }, []);
 
   return (
-    <Router allRoutes={allRoutes} />
-  )
+    <Suspense fallback={<div>Loading...</div>}>
+      <Router allRoutes={allRoutes} />
+    </Suspense>
+  );
 }
 
-export default App
+export default App;
+
