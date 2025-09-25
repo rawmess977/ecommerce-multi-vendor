@@ -9,7 +9,7 @@ import {Toaster} from 'react-hot-toast'
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Provider store={store}>
-      <Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
         <App />
         <Toaster toastOptions={
           {

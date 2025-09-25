@@ -1,14 +1,22 @@
+// import { privateRoutes } from './privateRoutes';
+import { lazy, Suspense } from "react";
 import { privateRoutes } from './privateRoutes';
-import { lazy } from "react";
 
 const MainLayout = lazy(() => import("../../layout/MainLayout"));
 
-const  getRoutes = () => [
+const getRoutes = () => [
   {
     path: "/",
-    element: <MainLayout />,
-    children: privateRoutes,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <MainLayout />
+      </Suspense>
+    ),
+    children: [
+      { path: "test", element: <div>Test</div> },
+      ...privateRoutes,
+    ],
   },
 ];
 
-export  {getRoutes};
+export { getRoutes };

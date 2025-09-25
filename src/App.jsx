@@ -1,8 +1,8 @@
 
 import Router from './router/Router';
 import publicRoutes from './router/routes/publicRoutes';
-import { useEffect, useState, Suspense } from 'react';
-import {getRoutes} from './router/routes';
+import { Suspense, useEffect, useState } from 'react';
+import { getRoutes } from './router/routes';
 
 function App() {
   const [allRoutes, setAllRoutes] = useState([...publicRoutes]);
